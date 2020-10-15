@@ -57,9 +57,9 @@ def func_map_layer(C_est_AB, C_est_BA,source_evecs, source_evecs_trans, source_e
     gamma = .001#1      # Laplacian commutativity
     delta = 0 # Descriptor preservation via commutativity
 
-    E1 = penalty_bijectivity(C_est_AB, C_est_BA) +penalty_bijectivity(C_est_BA, C_est_AB))/2
+    E1 = (penalty_bijectivity(C_est_AB, C_est_BA) +penalty_bijectivity(C_est_BA, C_est_AB))/2
 
-    E2 = penalty_ortho(C_est_AB)  + penalty_ortho(C_est_BA))/2
+    E2 = (penalty_ortho(C_est_AB)  + penalty_ortho(C_est_BA))/2
     #E5 = 0
     E4=0
     E3 = (penalty_laplacian_commutativity(C_est_AB,source_evals,target_evals) 
