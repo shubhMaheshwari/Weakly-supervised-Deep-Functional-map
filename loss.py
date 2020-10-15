@@ -33,7 +33,7 @@ def pointwise_corr_layer(C_est, source_evecs, target_evecs_trans, source_dist_ma
 
     P_norm = tf.nn.l2_normalize(P, dim=1, name='soft_correspondences')  
     #unsupervised loss calculation
-    avg_distance_on_model_after_map = tf.einsum('kmn,kmi,knj->kij', source_dist_map, tf.pow(P_norm,2), tf.pow(P_norm,2))  vertices on the model
+    avg_distance_on_model_after_map = tf.einsum('kmn,kmi,knj->kij', source_dist_map, tf.pow(P_norm,2), tf.pow(P_norm,2))  # vertices on the model
     avg_distortion_after_map = avg_distance_on_model_after_map - target_dist_map
     unsupervised_loss = tf.nn.l2_loss(avg_distortion_after_map)
     unsupervised_loss /= tf.to_float(tf.shape(P)[0] * tf.shape(P)[2] * tf.shape(P)[2]) 
